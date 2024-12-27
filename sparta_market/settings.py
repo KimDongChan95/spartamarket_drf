@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',  # DRF 추가
+    'rest_framework.authtoken',  # DRF Token 인증 추가
+    'accounts',  # accounts 앱 추가
+    'products',  # products 앱 추가
 ]
 
 MIDDLEWARE = [
@@ -47,10 +51,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'rest_framework',  # DRF 추가
-    'rest_framework.authtoken',  # DRF Token 인증 추가
-    'accounts',  # accounts 앱 추가
-    'products',  # products 앱 추가
 ]
 
 ROOT_URLCONF = "sparta_market.urls"
@@ -129,6 +129,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
